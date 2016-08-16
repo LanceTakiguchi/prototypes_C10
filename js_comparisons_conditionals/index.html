@@ -1,0 +1,91 @@
+<!-- ------------
+File Name: index.html
+Author: Lance Takiguchi
+Date: 08/16/2016 Time: 16:17
+Objective: Learning/Getting used to JS comparators and conditional statements
+ ------------ -->
+
+<!doctype html>
+<html>
+
+<!-- ------------ HEAD ------------ -->
+<head>
+    <script>
+        // ------ Feature Set 1 - Declare Some Variables ------
+        var mySmallNumber = 5;
+        var myString = "5";
+        var myBigNumber = 255;
+
+        // ------ Feature Set 2 - Make Some Comparison ------
+        var output1;
+        var output2;
+        var output3;
+        var output4;
+
+        output1 = mySmallNumber == myString; // Prediction: 5 == "5" >> True because they are the same value despite being different types.
+        output2 = mySmallNumber === myString; // Prediction: 5 === "5" >> True because === is same value or type and the two share the same value // Wrong, it was False, the === must work as an && then...
+        output3 = mySmallNumber < myBigNumber; // Prediction: 5 < 255 >> False because the 2 in 255 is < 5
+        output4 = mySmallNumber > myBigNumber; // Prediction: 5 > 255 >> True because the 2 in 255 is < 5
+
+        console.log("My output1 =", output1);
+        console.log("My output2 =", output2);
+        console.log("My output3 =", output3);
+        console.log("My output4 =", output4);
+
+        // ------ Feature Set 3 Declare More Variables ------
+        var gameNumber = 64;
+        var userInput1 = 78;
+        var userInput2 = 78;
+
+        // ------ Feature Set 4 Conditionals ------
+        if (userInput1 > gameNumber){
+            console.log("The number is too high!");
+        }
+
+        if (userInput1 < gameNumber){
+            console.log("The number is too low!");
+        }
+
+        if (userInput1 < 1 || userInput1 > 100){
+            console.log("The number is out of range.");
+        }
+        else{
+            console.log("The number is in range.");
+        }
+
+        if (userInput2 == gameNumber){
+            console.log("The correct number has been guessed!");
+        }
+        else{
+            console.log("Try guessing again!");
+        }
+
+        // ------ Feature Set 5 - Switch Statement ------
+        // NOTE TO GRADER: The instructions for case 2 and onward are worded to make me think they are looking for when
+        // the number are exactly 10 above, aka 74 vs >= 74. If it was looking for a range vs just one case number then
+        // please reword instructions a little clearer. Thank you!
+        switch(userInput1){
+            case(gameNumber):
+                console.log("You found the correct number!");
+                break;
+            case(gameNumber + 10):
+                console.log("To low but warm");
+                break;
+            case(gameNumber - 25):
+                console.log("To low and cold");
+                break;
+            case(gameNumber + 25):
+                console.log("To high and cold");
+                break;
+            default:
+                console.log("You are way off");
+                break;
+        }
+    </script>
+</head>
+
+<!-- ------------ Body ------------ -->
+<body>
+</body>
+
+</html>
