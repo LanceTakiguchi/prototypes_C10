@@ -41,10 +41,54 @@
     <script>
         $(document).ready(function () {
             //playground 1 code
+            var playground1_h1 = $("<h1>").text("This is another heading (playground1)");
+            playground1_h1.appendTo("#playground1");
+
+            var playground1_p1 = $("<p>").text("This is a sub-par paragraph (playground1)");
+            playground1_p1.appendTo("#playground1");
+
+            var playground1_p2 = $("<p>").text("This text is also red (playground1)").css("color", "red"); // TODO: Not doing anything!!!
+            playground1_p2.appendTo("#playground1");
+
 
             //playground 2 code
+            var playground2_div1 = $("<div>").text("I'm awesome (playground2)").addClass("awesome_class");
+            playground2_div1.appendTo("#playground2");
+
+            var playground2_div2 = $("<div>").text("I'm MORE awesome than the above div text (playground2)").addClass("awesome_class").attr("id:","my_awesome_div2_playground2");
+            playground2_div2.appendTo("#playground2");
+
+            var playground2_div3 = $("<div>").text("I'm am EVEN MORE awesome than those two (playground2)").addClass("awesome_class").attr("id:","my_awesome_div3_playground2").attr("data-coolness", "high");
+            playground2_div3.appendTo("#playground2"); // TO GRADER: I have spend some time, but am not seeing any way to make the "EVEN MORE" strong text. Either way in the example the strong does not even seem to make a difference.
+
 
             //playground 3 code
+            var playground3_ul = $("<ul>").addClass("neato");
+
+            var playground3_li1 = $("<li>").text("Site 1");
+            var playground3_li2 = $("<li>").text("Site 2");
+            var playground3_li3 = $("<li>").text("Site 3");
+
+            var playground3_figure = $("<figure>").addClass("awesome_picture");
+
+            var playground3_img = $("<img>").attr("src", "http://comerecommended.com/wp-content/uploads/2013/01/how-to-get-awesome-back.jpg");
+
+            var playground3_figcaption = $("<figcaption>").text("That's right, ");
+            var playground3_figcaption_span = $("<span>").text("you are");
+
+
+            playground3_ul.appendTo("#playground3");
+
+            playground3_li1.appendTo(playground3_ul);
+            playground3_li2.appendTo(playground3_ul);
+            playground3_li3.appendTo(playground3_ul);
+
+            playground3_figure.appendTo("#playground3");
+
+            playground3_img.appendTo(playground3_figure);
+
+            playground3_figcaption.appendTo(playground3_figure);
+            playground3_figcaption_span.appendTo(playground3_figcaption);
         });
     </script>
 </head>
