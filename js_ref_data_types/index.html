@@ -1,0 +1,71 @@
+<!-- ***********
+Project Name: js_ref_data_types
+File Name: index.html
+Author: Lance Takiguchi
+Date: 08/22/2016 Time: 11:50
+Objective: Getting used to JS reference data types
+ *********** -->
+
+<!doctype html>
+<html>
+<head>
+    <script>
+        // ****** Feature Set 1.0 - Student Array ******
+        student_array = ["Jenny", "Ken", "Jim", "Darwin", "Sally"];
+        console.log("3rd student: " + student_array[2]); // in the array, ["Jenny", "Ken", "Jim", "Darwin", "Sally"], student_array[2] should be Jim
+
+        // **** Feature Set 1.1 - Array Methods ******
+        console.log("Whole array of students: " + student_array);
+        console.log("Total number of students: " + student_array.length);
+        student_array.push("Kim", "Adam");
+        console.log("Updated array of students after 2 pushed in: " + student_array);
+
+        // ****** Feature Set 2.0 - Build an Object (You down with O.O.P.) ******
+        var student = {};
+
+        student.firstName = "Jake";
+        student.lastName = "Long";
+        student.age = 17;
+        student.school ="Lincoln High School";
+        student.questionList = [];
+        student.hasQuestion = false;
+
+        // **** Feature Set 2.1 - Add methods to the madness ****
+        student.greeting = function(){
+            return "Hello, my name is " + student.firstName;
+        };
+        student.aboutMe = function() {
+            return "My full name is " + student.firstName + " " + student.lastName + ", I am " + student.age + " years old and I am a student at " + student.school + ".";
+        };
+        student.askQuestion = function(question){
+            student.questionList.push(question);
+            student.hasQuestion = true;
+            return "A question has been added to your list";
+        };
+        student.answerQuestion = function(){
+            if (student.hasQuestion){
+                student.hasQuestion = false;
+                return student.questionList[student.questionList.length - 1]
+            }
+            else{
+                return "You have no pending questions"
+            }
+        };
+
+        // **** Feature Set 2.2 - Test Your student ****
+        console.log("Greeting Function: " + student.greeting());
+        console.log("About Me Function: " + student.aboutMe());
+        console.log("Answer Question Function (empty question list): " + student.answerQuestion());
+        console.log("Ask Question Function: " + student.askQuestion("What is the teacher to student ratio?"));
+        console.log("Ask Question Function: " + student.askQuestion("How long is the school day?"));
+        console.log("Ask Question Function: " + student.askQuestion("How do you get into honor's courses?"));
+        console.log("Answer Question Function: " + student.answerQuestion());
+
+    </script>
+</head>
+
+
+<body>
+</body>
+
+</html>
