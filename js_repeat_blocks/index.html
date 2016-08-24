@@ -1,0 +1,103 @@
+<!-- ***********
+Project Name: JS Repeat Blocks
+File Name: index.html
+Author: Lance Takiguchi
+Date: 08/23/2016 Time: 14:16
+Objective: Get used to using loops in JS
+ *********** -->
+
+<!doctype html>
+<html>
+<head>
+    <script>
+
+        // ****** Feature Set 1 - More array looping fun! ******
+        var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        // ** Loops through array and outputs the index **
+        for(var i=1; i < numbers.length; i++){
+            console.log("i counting:" + i);
+        }
+
+        console.log("i after counting: " + i);
+        i--; // reset i to 10
+        console.log("i--: " + i);
+
+        // ** Loop to count down from 10 to 1 **
+        for(; i>0; i--){
+            console.log("i count down:" + i);
+        }
+        console.log("i after counting down: " + i);
+
+        console.log("++i:" + ++i); //** Get i to be 1 so that is will be odd
+
+        // ** Loop to count odd numbers **
+        for(; i<10; i += 2){
+            console.log("i counting odd: " + i);
+        }
+        console.log("i after counting odds: " + i);
+
+        //**** logging odds in a mixed array of numbers ****
+        // ** loop to log starting number and every other after it 5 times **
+
+        i = 1; //** Get i to be 1 so that is will be odd
+        console.log("Resetting i = 1: " + i);
+
+        var mixedArray = [4, 56, 11, 13, 97, 22, 7, 36, 19, 5, 8, 10];
+        // ** Loop to count odd numbers **
+        for(; i<10; i += 2){
+            console.log("mixedArray MIS-counting odd: " + mixedArray[i]);
+        }
+        console.log("i after MIS-counting mixedArray's odds: " + i);
+
+        //** FIXED logging odd numbers **
+
+        i = 0;
+        //** loop through a mixed array and only console.log odd numbers**
+        for(; i<mixedArray.length; i++){
+            if( mixedArray[i]%2 === 1){ //* Checks if current element is ood via modulo 2 == 1 *
+                console.log("mixedArray odd numbers: " + mixedArray[i]);
+            }
+        }
+
+        //****** Feature Set 2 - For in loop ******
+        var classRoom = {desk1: 'Stu', desk2: 'Peggy', desk3: 'LoneStar', desk4: 'George', desk5: 'Sheldon'};
+        for(var desk in classRoom){
+            console.log(classRoom[desk] + " is at " + desk);
+        }
+
+        //****** Feature Set 3 - While loop ******
+        var studentArray = [{name: "Bob", grade: 87}, {name: "Fred", grade: 82}, {name: "George", grade: 93}, {name: "Robert", grade: 85}];
+
+        // console.log("studentArray testing: " + studentArray[1]["grade"]); // Test indexing through studentArray
+
+        findStudent = function(student_name){
+            var found_student = false;
+            var student_index = 0;
+            var findStudent_output;
+
+            while(found_student === false){
+                if(studentArray[student_index]["name"] === student_name){
+                    findStudent_output = "Found " + student_name + " their grade is: " + studentArray[student_index]["grade"] + ".";
+                    found_student = true;
+                    return findStudent_output;
+                }
+                student_index++;
+                if (student_index >= studentArray.length){
+                    findStudent_output = "Student " + student_name + " not found.";
+                    return findStudent_output;
+                }
+            }
+        };
+        //*** Testing findStudent function ***
+        console.log("findStudent Test 1:", findStudent("George"));
+        console.log("findStudent Test 2:", findStudent("Fred"));
+        console.log("findStudent Test 3:", findStudent("Hank"));
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
