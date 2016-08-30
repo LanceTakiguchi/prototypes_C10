@@ -26,7 +26,8 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-OOP
             //** 2. Method that will remove coins from coin_stack.
             this.remove_coins = function(coins_to_remove){
                 if(this.value >= coins_to_remove){ //** If there are enough coins to remove
-                    return this.value -= coins_to_remove; //** return the amount requested to be removed
+                    this.value -= coins_to_remove; //** Amount requested to be removed
+                    return coins_to_remove; //** Return how many coins were taken
                 }else{
                     return this.value -= this.value; //** AKA return set this.value to 0
                 }
@@ -51,7 +52,23 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-OOP
 
 
         // ****** Feature Set 3 - Prototype in the prototype ******
-        //** 1.
+        //** 1. Prototype a method that transfers coins from one coin_stack to another
+        coin_stack.prototype.transfer_coins = function(robbed_coin_stack, transfer_amount){
+            /*this.add_coins(robbed_coin_stack.remove_coins(transfer_amount)); //!** Removes coins from robbed_coin_stack and adds them to this coin_stack*/ //** One line version
+            var amount_taken = robbed_coin_stack.remove_coins(transfer_amount); //** amount_taken == the coins robbed from robbed_coin_stack
+            this.add_coins(amount_taken); //** Moves the taken coins into this coin_stack's value
+            return amount_taken; //** Return many coins were transferred
+        };
+
+        //** 2. Test the transfer_coins prototype
+        var erics_coins = new coin_stack(50);
+        var dans_coins = new coin_stack(50);
+        console.log("Eric has ", erics_coins.value, " coins. Dan has ", dans_coins.value, " coins.");//** Display how many coins Eric and Dan start with
+        // 2.iii Use the new trans_coins prototyped method
+        console.log("Eric has taken ", erics_coins.transfer_coins(dans_coins, 30), " coins from Dan. How dare Eric take from his teacher!"); //** Takes 30 coins from Dan and gives it to Eric
+        // 2.iv Checking how many coins Eric and Dan have
+        console.log("Eric has ", erics_coins.value, " coins. Dan has", dans_coins.value, " coins.");
+
     </script>
 </head>
 
