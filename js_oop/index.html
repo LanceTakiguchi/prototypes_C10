@@ -1,0 +1,63 @@
+<!-- ***********
+Project Name: js_oop
+File Name: index.html
+Author: Lance Takiguchi
+Date: 08/30/2016 Time: 15:24
+Objective: Learning and get our first experience in JS object oriented programming.
+Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-OOP
+ *********** -->
+
+<!doctype html>
+<html>
+<head>
+    <title> Javascript OOP Prototypes </title>
+
+    <script>
+        // ****** Feature Set 1 - Coin Stack ******
+        var coin_stack = function(init_coins){ //** 1. Create constructor function w/ parameter for initial amount of coins
+            this.value = init_coins;     //** 2. property value set to initial coin amount
+
+
+            // ****** Feature Set 2 - Add Remove Coins ******
+            //** 1. Method that will add coins to coin_stack w/ param for how many to add
+            this.add_coins = function(coins_to_add){
+                this.value += coins_to_add; //** Adds in coins to the coin_stack
+            };
+            //** 2. Method that will remove coins from coin_stack.
+            this.remove_coins = function(coins_to_remove){
+                if(this.value >= coins_to_remove){ //** If there are enough coins to remove
+                    return this.value -= coins_to_remove; //** return the amount requested to be removed
+                }else{
+                    return this.value -= this.value; //** AKA return set this.value to 0
+                }
+            };
+        };
+        //** Set 1-3. Testing constructor
+        var my_coin_stack = new coin_stack(50);
+        console.log("my_coin_stack contains ", my_coin_stack.value, " coins");
+
+        //*** Set 2-3. Test add_coins and remove_coins methods of coin_stack
+        //** Testing coin_stack.add_coins functionality; Testing if coin_stack can have coins added to it's value
+        my_coin_stack.add_coins(15); //**a. Add 15 coins
+        console.log("I have ", my_coin_stack.value, " coins in my coin stack"); //**b. logging new value
+
+        //** Testing to see if coins can be removed if you have enough coins
+        /*console.log("I have ", my_coin_stack.remove_coins(37), " coins in my coin stack"); One way to do part c. & d.*/
+        my_coin_stack.remove_coins(37); //**c. remove 37 coins
+        console.log("I have ", my_coin_stack.value, " coins in my coin stack"); //**b. logging new value
+
+        //** Testing to see if the coin_stack object can handle a remove_coins amount greater that the current coin_stack.value
+        console.log("I have ", my_coin_stack.remove_coins(55), " coins in my coin stack"); //** e. & f. removing 55 coins
+
+
+        // ****** Feature Set 3 - Prototype in the prototype ******
+        //** 1.
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1> Javascript OOP Prototypes </h1> <!--Main website title-->
+    </header>
+</body>
+</html>
