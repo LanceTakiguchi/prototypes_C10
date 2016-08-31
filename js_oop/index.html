@@ -29,7 +29,9 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-OOP
                     this.value -= coins_to_remove; //** Amount requested to be removed
                     return coins_to_remove; //** Return how many coins were taken
                 }else{
-                    return this.value -= this.value; //** AKA return set this.value to 0
+                    var amount_taken = this.value; //** Save how much is about to be transferred in actuality as there is not enough value relative to coins_to_remove
+                    this.value -= this.value; //** Take everything out of the coin_stack
+                    return amount_taken; //** This is how much is taken out
                 }
             };
         };
@@ -68,6 +70,10 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-OOP
         console.log("Eric has taken ", erics_coins.transfer_coins(dans_coins, 30), " coins from Dan. How dare Eric take from his teacher!"); //** Takes 30 coins from Dan and gives it to Eric
         // 2.iv Checking how many coins Eric and Dan have
         console.log("Eric has ", erics_coins.value, " coins. Dan has", dans_coins.value, " coins.");
+        // 2.v Transfer 120 coins from Eric to Dan; transferring more coins then Eric has to test how it handles
+        console.log("Now Eric has taken ", erics_coins.transfer_coins(dans_coins, 150), " coins from Dan. Eric wants more than Dan has, what greed!"); //** Takes 30 coins from Dan and gives it to Eric
+        // 2.vi Checking if Eric & Dan have the correct amounts
+        console.log("Now Eric has ", erics_coins.value, " coins. Dan has", dans_coins.value, " coins.");
 
     </script>
 </head>
