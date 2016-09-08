@@ -19,7 +19,7 @@ $(document).ready(function(){
                     title_array.push(global_result.feed.entry[i]['im:name']);
                     director_array.push(global_result.feed.entry[i]["im:artist"]);
                     var current_title = title_array[i].label;
-                    var current_director = director_array[i]["lebel"];
+                    var current_director = director_array[i].label;
                     var container = $("<div>",{
                         class:'movie_container'
                     });
@@ -28,7 +28,7 @@ $(document).ready(function(){
                     var director = $('<h4>',{text: current_director}); //TODO: Why does this not load?
                     var image = $('<img>',{src:image_array[i]});
                     movie_info.append(title, director);
-                    container.append(image,movie_info);
+                    container.append(movie_info,image);
                     main.append(container);
                 }
                 console.log("image_array: ", image_array);
