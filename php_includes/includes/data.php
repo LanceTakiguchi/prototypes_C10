@@ -1,6 +1,6 @@
 <!-- ***********
 Project Name: php_includes
-File Name: index.php
+File Name: data.php
 Author: Lance Takiguchi
 Date: 09/27/2016 Time: 12:38
 Objective: To be inported and used via include.
