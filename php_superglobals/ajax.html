@@ -1,0 +1,46 @@
+<!-- ***********
+Project Name: php_superglobals
+File Name: ajax.html
+Author: Lance Takiguchi
+Date: 09/28/2016 Time: 10:48
+Objective: Get familiar with superglobals
+Prompt: https://learning-fuze.github.io/prototypes_C10/#/PHP-Super-Globals
+ *********** -->
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <title> php_superglobals </title>
+
+    <script>
+        function call(){
+            $.ajax({
+                url: 'index.php',
+                dataType: 'text',
+                method: 'POST',
+                data: {
+                    check: $("input").val(),
+                    textarea: $("textarea").val()
+                },
+                success: function(response){
+                    console.log(response)
+                },
+                error: function(response){
+                    console.log("AJAX error!");
+                    console.log(response);
+                }
+            });  //end of the ajax call
+        }
+    </script>
+</head>
+<body>
+<form action="index.php" method="GET">
+    <input type="checkbox" value="howdy">
+    <textarea>
+
+    </textarea>
+    <button type="button" onclick="call()">Call</button>
+</form>
