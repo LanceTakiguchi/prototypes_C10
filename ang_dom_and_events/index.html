@@ -1,12 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
     <meta charset="UTF-8">
     <title>Angular DOM and Events</title>
     <!-- Add Angular CDN below -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
-
+<!--Feature Set 1 - ng-disabled-->
+<!--Feature Set 4 - Count the Clicks ng-clicks-->
+<div ng-init="my_var = true; counter = 0">
+    <!--Feature Set 3 - Should I Show or Should I Hide-->
+    <span ng-hide="my_var">Button is Enabled</span>
+    <span ng-show="my_var">I think your button is broken there</span>
+    <button ng-disabled="my_var" ng-click="counter = counter + 1">
+        My Grader loves me <3
+    </button>
+    <!--Feature Set 2 - Toggle that Boolean-->
+    <input type="checkbox" ng-model="my_var">
+    <p>Counter: {{counter}}</p>
+</div>
 </body>
 </html>
