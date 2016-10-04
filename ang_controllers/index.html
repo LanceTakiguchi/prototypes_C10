@@ -4,9 +4,36 @@
     <meta charset="UTF-8">
     <title>Angular Controllers</title>
     <!-- Add the AngularJS CDN below -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
-<body>
-
+<body ng-app="my_app">
+<div ng-controller="form_controller as fc">
+    <label>
+        First Name:
+        <input fc.form.first_name type="text">
+    </label>
+    <br>
+    <label>
+        Last Name:
+        <input fc.form.last_name type="text">
+    </label>
+    <br>
+    <label>
+        Email:
+        <input fc.form.email type="email">
+    </label>
+    <br>
+    <label>
+        Comments:
+        <textarea fc.form.comments></textarea>
+    </label>
+</div>
 </body>
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("form_controller", function(){
+        this.form = {};
+        this.form_array = [];
+    })
+</script>
 </html>
