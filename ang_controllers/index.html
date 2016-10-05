@@ -31,35 +31,41 @@
     <button ng-click="fc.addPerson()">Enter Person</button>
     <br>
     <p>Characters Left: {{fc.length_left()}}</p>
-    <table>
-        <tbody>
-        <tr>
-            <th>Full Name</th> <th>Email</th> <th>Comments</th>
-        </tr>
-        <tr ng-repeat="person in fc.form_array">
-            <td>{{person.first_name + " " + person.last_name}}</td> <td>{{person.email}}</td> <td>{{person.comments}}</td>
-        </tr>
-        </tbody>
-    </table>
+    <div ng-controller="table_controller as tc">
+        <p>Total Entries: {{tc.form_array_length()}}</p>
+        <table>
+            <tbody>
+            <tr>
+                <th>Full Name</th> <th>Email</th> <th>Comments</th>
+            </tr>
+            <tr ng-repeat="person in form_array">
+                <td>{{person.first_name + " " + person.last_name}}</td> <td>{{person.email}}</td> <td>{{person.comments}}</td> <td><button ng-click="tc.remove_from_array($index)">Delete</button></td>
+            </tr>
+            <tr>
+                <td>{{fc.form.first_name + " " + fc.form.last_name}}</td> <td>{{fc.form.email}}</td> <td>{{fc.form.comments}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 <script>
     var app = angular.module("my_app", []);
-    app.controller("form_controller", function(){
+    app.controller("form_controller", function($scope){
         this.form = {
             first_name: "",
             last_name: "",
             email: "",
             comments: ""
         };
-        this.form_array = [
+        $scope.form_array = [
             {first_name: "Lance",
             last_name: "Takiguchi",
             email: "coolbean@awesome.com",
             comments: "Water Melon"}
         ];
         this.addPerson = function(){
-            this.form_array.push(this.form);
+            $scope.form_array.push(this.form);
             this.form = {
                 first_name: "",
                 last_name: "",
@@ -75,6 +81,16 @@
         this.max_reached = function(){
             return this.length_left() <= 0;
         };
+    });
+
+    app.controller("table_controller", function($scope){
+        this.remove_from_array = function(index){
+            $scope.form_array.splice(index, 1);
+        };
+        this.form_array_length = function(){
+            return $scope.form_array.length;
+        }
     })
+
 </script>
 </html>
