@@ -1,12 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="myMusic">
 <head>
     <meta charset="UTF-8">
     <title>Angular Services Intro</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
 </head>
 <body>
-
+<h1>Itunes Artist Search</h1>
+<div ng-controller="mainController as mc">
+    <input ng-model="artist" type="text">
+    <button ng-click="mc.get_artist(artist)">BOOM!</button>
+</div>
 <script src="script.js"></script>
 </body>
 </html>
