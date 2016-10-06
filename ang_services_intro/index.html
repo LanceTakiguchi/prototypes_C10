@@ -6,10 +6,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
 </head>
 <body>
-<h1>Itunes Artist Search</h1>
+    <h1>Itunes Artist Search</h1>
+    <p>
+        Search Itunes for songs by your favorite artists!
+    </p>
 <div ng-controller="mainController as mc">
     <input ng-model="artist" type="text">
-    <button ng-click="mc.get_artist(artist)">BOOM!</button>
+    <button ng-click="mc.get_artist(artist)">Search Artist</button>
+    <!-- TABLE -->
+    <table>
+        <tbody>
+            <tr>
+                <th>Artist</th> <th>Genre</th> <th>Track</th>
+            </tr>
+            <tr ng-repeat="hit in mc.data">
+                <td>{{hit.artistName}}</td>
+                <td>{{hit.primaryGenreName}}</td>
+                <td>{{hit.trackName}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <script src="script.js"></script>
 </body>

@@ -12,8 +12,8 @@ app.controller("mainController", function($http, $log){
         .then(
             function(success_response){
                 //$log.info("Artist", artist);
-                $log.info("Here is the response", success_response);
-                self_itunes.data = success_response;
+                $log.info("Here is the response", success_response.data.results);
+                self_itunes.data = success_response.data.results;
             },
             function(fail_response){
                 self_itunes.data = fail_response;
