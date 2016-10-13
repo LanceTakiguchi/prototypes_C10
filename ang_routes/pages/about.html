@@ -1,4 +1,10 @@
 <div class="jumbotron text-center">
-    <h1>About page</h1>
-    <!-- print from the about controller here -->
+	<h1>About page</h1>
+	<!-- print from the about controller here -->
+	<p> Is this what it is all about??? </p>
+	<div ng-app="routeApp" id="main">
+		<div ng-controller="aboutController as ac">
+			{{message}}
+		</div>
+	</div>
 </div>
