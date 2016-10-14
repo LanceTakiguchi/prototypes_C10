@@ -1,0 +1,99 @@
+<!-- *********** 
+Project Name: JS Regex
+File Name: index.html
+Author: Lance Takiguchi
+Date: 10/13/2016 Time: 17:18 
+Objective: Get used to Regex
+Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-REGEX
+*********** -->
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title> js_regex </title>
+	<script>
+	var fs1a = /e/;
+	var fs1b = /[e]/ig;
+	var fs1c = /sta?i?r/g;
+
+	var fs1a_test = [
+	{string: "hello", expected: ["e"]},
+	{string: "hi", expected: null},
+	{string: "testing", expected: ["e"]},
+	{string: "cheese", expected: ["e"]},
+	{string: "Eggs elephant", expected: ["e"]},
+	{string: "connected", expected: ["e"]}
+	];
+	var fs1b_test = [
+	{string: "hello", expected: ["e"]},
+	{string: "hi", expected: null},
+	{string: "testing", expected: ["e"]},
+	{string: "cheese", expected: ["e", "e", "e"]},
+	{string: "Eggs elephant", expected: ["E", "e", "e"]},
+	{string: "connected", expected: ["e", "e"]},
+	{string: "HE entEred", expected: ["E", "e", "E", "e"]}
+	];
+	var fs1c_test = [
+	{string: "stir the star", expected: ["stir", "star"]},
+	{string: "stim the stat", expected: null},
+	{string: "stir the stat", expected: ["stir"]},
+	{string: "stim the star", expected: ["star"]}
+	];
+	var tester = function(regex, test_strings){
+		var test_results = [];
+		for(var index in test_strings){
+			var regex_result = test_strings[index].string.match(regex);
+			var expected = test_strings[index].expected;
+			if(regex_result === null){
+				if(expected === null){
+					test_results.push({result: true, message:[index + " passed"]});
+				}else{
+					test_results.push({result: false, message: index + " failed - Expected: " + expected + " || Result: " + regex_result});
+				}
+			}else if(regex_result.length === expected.length){
+				var result_bool = true;
+				var result_array = [];
+				for(var inner_index in expected){
+					if(expected[inner_index] !== regex_result[inner_index]){
+						result_bool = false;
+						result_array.push(" in: " + inner_index + " failed at " + inner_index + " - Expected: " + expected[inner_index] + " || Result: " + regex_result[inner_index]);
+					}else{
+						result_array.push(" in:" + inner_index + " passed");
+					}
+				}
+				test_results.push({result: result_bool, message: result_array});
+			}else{
+				test_results.push({result: false, message: index + " failed - Expected length: " + expected.length + " || Result: " + regex_result.length});
+			}
+		}
+		return test_results;
+	}
+	var run_test = function(regex, test){
+		var run = tester(regex, test);
+		for(var index in run){
+			if(run[index].result){
+				console.log("out:" + index + " " + run[index].message);
+			}else{
+				console.warn("out:" + index + " " + run[index].message);
+			}
+		}
+	}
+	var init_tests = function(){
+		console.log("");
+		console.info("fs1a test: One lowercase 'e'");
+		run_test(fs1a, fs1a_test);
+		console.log("");
+		console.info("fs1b test: Caseinsensitive all 'e's");
+		run_test(fs1b, fs1b_test);
+		console.log("");
+		console.info("fs1b test: Caseinsensitive all 'e's");
+		run_test(fs1c, fs1c_test);
+	}
+	init_tests();
+	</script>
+</head>
+<body>
+	<h1> Javascript - Regular Expressions
+	</body>	
+	</html>
