@@ -16,7 +16,10 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-REGEX
 	var fs1a = /e/;
 	var fs1b = /[e]/ig;
 	var fs1c = /sta?i?r/g;
-
+	var phonenumber3 = /^([1])?[\s|-]?(([0-9]{3})[\s|-]*){2}([0-9]{4})$/img;
+	var phonenumber2 = /^(?:([0-9]{3}).*)([0-9]{3}).*([0-9]{4})$/img;
+	var phonenumber4 = /^(?:(?:[1]*.*[0-9]{3}).*){2}(?:[0-9]{4})$/img;
+	var phonenumber = /^([1|\(])?[\s|-]?(([0-9]{3})[\s|\-|\)]*){2}([0-9]{4})$/img;
 	var fs1a_test = [
 	{string: "hello", expected: ["e"]},
 	{string: "hi", expected: null},
@@ -39,6 +42,23 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-REGEX
 	{string: "stim the stat", expected: null},
 	{string: "stir the stat", expected: ["stir"]},
 	{string: "stim the star", expected: ["star"]}
+	];
+	var phonenumber_test = [
+	{string: "818 555 1212", expected: ["818 555 1212"]},
+	{string: "818-555-1212", expected: ["818-555-1212"]},
+	{string: "1818 555 1212", expected: ["1818 555 1212"]},
+	{string: "1818-555-1212", expected: ["1818-555-1212"]},
+	{string: "1 818 555 1212", expected: ["1 818 555 1212"]},
+	{string: "1-818-555-1212", expected: ["1-818-555-1212"]},
+	{string: "(818) 555-1212", expected: ["(818) 555-1212"]},
+	{string: "8185551212", expected: ["8185551212"]},
+	{string: "818      555      1212", expected: ["818      555      1212"]},
+	{string: "818 555-1212", expected: ["818 555-1212"]},
+	{string: "18185551212", expected: ["18185551212"]},
+	{string: "818555121", expected: null},
+	{string: "818?5551212", expected: null},
+	{string: "8185-55-1212", expected: null},
+	{string: "555-1212", expected: null}
 	];
 	var tester = function(regex, test_strings){
 		var test_results = [];
@@ -89,6 +109,9 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-REGEX
 		console.log("");
 		console.info("fs1b test: Caseinsensitive all 'e's");
 		run_test(fs1c, fs1c_test);
+		console.log("");
+		console.info("phonenumber test");
+		run_test(phonenumber, phonenumber_test);
 	}
 	init_tests();
 	</script>
