@@ -16,10 +16,13 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-REGEX
 	var fs1a = /e/;
 	var fs1b = /[e]/ig;
 	var fs1c = /sta?i?r/g;
-	var phonenumber3 = /^([1])?[\s|-]?(([0-9]{3})[\s|-]*){2}([0-9]{4})$/img;
-	var phonenumber2 = /^(?:([0-9]{3}).*)([0-9]{3}).*([0-9]{4})$/img;
-	var phonenumber4 = /^(?:(?:[1]*.*[0-9]{3}).*){2}(?:[0-9]{4})$/img;
+	// var phonenumber3 = /^([1])?[\s|-]?(([0-9]{3})[\s|-]*){2}([0-9]{4})$/img;
+	// var phonenumber2 = /^(?:([0-9]{3}).*)([0-9]{3}).*([0-9]{4})$/img;
+	// var phonenumber4 = /^(?:(?:[1]*.*[0-9]{3}).*){2}(?:[0-9]{4})$/img;
 	var phonenumber = /^([1|\(])?[\s|-]?(([0-9]{3})[\s|\-|\)]*){2}([0-9]{4})$/img;
+	var passwordRegex = /(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])^[a-zA-Z][a-zA-Z0-9]{5,31}$/g;
+	// var passwordRegex2 = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,32}$/g;
+	// var passwordRegex3 = /^(?=.+\d)(?=.*[a-z])(?=.*[A-Z]).{6,32}$/g;
 	var fs1a_test = [
 	{string: "hello", expected: ["e"]},
 	{string: "hi", expected: null},
@@ -60,6 +63,17 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-REGEX
 	{string: "8185-55-1212", expected: null},
 	{string: "555-1212", expected: null}
 	];
+	var password_test = [
+	{string: "helloDude3", expected:["helloDude3"]},
+	{string: "Pa5sWoRd", expected: ["Pa5sWoRd"]},
+	{string: "thisIsaReallyL0NGpassword", expected:["thisIsaReallyL0NGpassword"]},
+	{string: "short", expected: null},
+	{string: "nocapsbutanumber1", expected: null},
+	{string: "5tartsWithANumber", expected: null},
+	{string: "ALLCAPSBUT4NUMBER", expected: null},
+	{string: "toDamnManyLettersForThisToBeAValidP4sswordYouKnowIt", expected: null},
+	{string: "ill#g@l_characters", expected: null}
+	];
 	var tester = function(regex, test_strings){
 		var test_results = [];
 		for(var index in test_strings){
@@ -67,9 +81,9 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-REGEX
 			var expected = test_strings[index].expected;
 			if(regex_result === null){
 				if(expected === null){
-					test_results.push({result: true, message:[index + " passed"]});
+					test_results.push({result: true, message:[" passed"]});
 				}else{
-					test_results.push({result: false, message: index + " failed - Expected: " + expected + " || Result: " + regex_result});
+					test_results.push({result: false, message: " failed - Expected: " + expected + " || Result: " + regex_result});
 				}
 			}else if(regex_result.length === expected.length){
 				var result_bool = true;
@@ -112,6 +126,9 @@ Prompt: https://learning-fuze.github.io/prototypes_C10/#/JS-REGEX
 		console.log("");
 		console.info("phonenumber test");
 		run_test(phonenumber, phonenumber_test);
+		console.log("");
+		console.info("password test");
+		run_test(passwordRegex, password_test);
 	}
 	init_tests();
 	</script>
