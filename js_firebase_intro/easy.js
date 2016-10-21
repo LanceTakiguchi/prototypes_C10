@@ -24,21 +24,35 @@ $(document).ready(function(){
 });
 
 // Add config data
-
+var config = {
+    apiKey: "AIzaSyAb-frJAyvwARPS4_zov4SiSglw9qG14dc",
+    authDomain: "introtest-fef98.firebaseapp.com",
+    databaseURL: "https://introtest-fef98.firebaseio.com",
+    storageBucket: "introtest-fef98.appspot.com",
+    messagingSenderId: "272459267595"
+};
 // Init firebase
-
+firebase.initializeApp(config);
 // Create firebase ref
-
+var fb_ref = firebase.database()
 // Create event listener for the students node in your database
-
+fb_ref.ref("students").on("value", function(fb_state){
+    console.log(fb_state.val());
+    updateDom(fb_state.val());
+})
 // Complete the addStudent function
-function addStudent(sid, sname, course, grade){
-
+function addStudent(id, name, course, grade){
+var send_fb_student = {
+    id: id,
+    name: name,
+    course: course,
+    grade: grade   
 }
-
+fb_ref.ref("students").push(send_fb_student);
+}
 // complete the delete function
 function deleteStudent(key, ele){
-
+fb_ref.ref("students/" + key).remove();
 }
 
 // complete the update function
@@ -52,8 +66,8 @@ function updateDom(d){
     for(var key in d){
         if(d.hasOwnProperty(key)){
             var row = $('<tr>');
-            var id = $('<td class="sid">' + d[key].student_id + '</td>');
-            var name = $('<td class="sname">' + d[key].student_name + '</td>');
+            var id = $('<td class="sid">' + d[key].id + '</td>');
+            var name = $('<td class="name">' + d[key].name + '</td>');
             var course = $('<td class="course">' + d[key].course + '</td>');
             var grade = $('<td class="grade">' + d[key].grade + '</td>');
             var actions = $('<td>', {'data-uid': key});
